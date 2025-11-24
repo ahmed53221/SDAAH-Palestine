@@ -1,0 +1,109 @@
+{
+  "title": "Palestine: Social Democracy Redux",
+  "author": "neon",
+  "start": "intro",
+  "scenes": {
+    "intro": {
+      "content": [
+        "You are the leader of Fatah in 2015, facing an unstable political situation.",
+        "Choose your first action:"
+      ],
+      "choices": [
+        {
+          "text": "Launch Youth Engagement Campaign",
+          "link": "youth_engagement"
+        },
+        {
+          "text": "Expand Security Patrols",
+          "link": "security_expansion"
+        },
+        {
+          "text": "Public Health Drive",
+          "link": "health_drive"
+        },
+        {
+          "text": "Hold National Unity Rally",
+          "link": "unity_rally"
+        }
+      ],
+      "onArrival": [
+        "setMonth 0",
+        "setYear 2015",
+        "set support_fatah 45",
+        "set support_ppp 1",
+        "set support_others 40",
+        "set support_pflp 5",
+        "set support_pni 4",
+        "set un_support 45",
+        "set faction_young 55",
+        "set faction_old 35",
+        "set faction_tech 10",
+        "set members_guard 45000",
+        "set members_red 10000",
+        "set members_others 80000",
+        "set militancy_guard Medium",
+        "set militancy_red Low",
+        "set militancy_others High"
+      ]
+    },
+    "youth_engagement": {
+      "content": [
+        "You connect with younger voters and activists.",
+        "Young Fatah support increases."
+      ],
+      "onArrival": [
+        "inc support_fatah 2",
+        "inc faction_young 5",
+        "inc un_support 1",
+        "goto next_turn"
+      ]
+    },
+    "security_expansion": {
+      "content": [
+        "Presidential Guard patrols expand across urban centers."
+      ],
+      "onArrival": [
+        "inc support_fatah 1",
+        "inc members_guard 2000",
+        "dec un_support 1",
+        "goto next_turn"
+      ]
+    },
+    "health_drive": {
+      "content": [
+        "You launch a basic healthcare expansion initiative."
+      ],
+      "onArrival": [
+        "inc support_fatah 3",
+        "inc un_support 2",
+        "goto next_turn"
+      ]
+    },
+    "unity_rally": {
+      "content": [
+        "You hold a national unity rally with moderate factions."
+      ],
+      "onArrival": [
+        "inc support_fatah 2",
+        "inc support_pflp 1",
+        "inc support_pni 1",
+        "goto next_turn"
+      ]
+    },
+    "next_turn": {
+      "content": [
+        "Turn has ended. Click continue to draw a new card."
+      ],
+      "onArrival": [
+        "inc month 1",
+        "if month >= 12 then set month 0 and inc year 1"
+      ],
+      "choices": [
+        {
+          "text": "Continue",
+          "link": "intro"
+        }
+      ]
+    }
+  }
+}
